@@ -1,0 +1,11 @@
+h1 {
+    color: orange;
+    text-align: center;
+    background: #c83f49
+}
+.row {
+    align-items: center;
+}
+.recent-search {
+    text-align: center;
+}
