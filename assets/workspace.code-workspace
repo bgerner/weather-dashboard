@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../projects/git-er-done"
+		},
+		{
+			"path": "../../../projects/scheduler"
+		}
+	],
+	"settings": {}
+}
