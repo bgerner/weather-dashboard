@@ -1,9 +1,10 @@
-// fix displayButtons loop so the most recent 10 searches are displayed
-// add function that calls getWeather once a previous search button is clicked
-// icons don't work - Cross-Origin Read Blocking
+// if u have time - clean up repetitive code in both for loops in displayButtons/ 'search history button' section of getWeather
+// fix repeating city names in cityHistoryEl
+// icons don't work locally - Cross-Origin Read Blocking
+
 
 var inputEl = document.getElementById('city-name');
-var buttonEl = document.getElementById('search');
+var searchButtonEl = document.getElementById('search');
 var cityHistoryEl = document.getElementById('previous-searches');
 var currentWeather = document.getElementById('current-weather');
 var cityHeader = document.getElementById('cityHeader');
@@ -29,25 +30,22 @@ var searchesArr = [];
 
 var cities = JSON.parse(localStorage.getItem("city"));
 
-
-// check if what im getting back is null
-
 var displayButtons = function () {
-    if (cities.length === 0) {
+    if (cities === null) {
         return;
     }
-    for (let i = 0; i > 10; i++) {
-        var recentSearch = document.createElement('li');
-        var recentSearchBtn = document.createElement('button');
-        recentSearchBtn.textContent = cities[i];
-        recentSearchBtn.classList = "btn btn-outline-dark"
-        recentSearch.appendChild(recentSearchBtn);
-        recentSearch.classList = "list-group-item recent-search";
-        cityHistoryEl.prepend(recentSearch);
-        searchesArr.push(cities[i]);
-        localStorage.setItem("city", JSON.stringify(searchesArr));
+    if (cities.length < 10) {
+        for (let i = 0; i < cities.length; i++) {
+            var { recentSearch, recentSearchBtn } = makeHistory(i);
+
+        }
     }
-} // loop through array and display buttons
+    else {
+        for (let i = cities.length - 10; i < cities.length; i++) {
+            var { recentSearch, recentSearchBtn } = makeHistory(i);
+        }
+    }
+}
 
 var apiKey = "bf5febefea936c9144ec3f7829565d5f"
 
@@ -56,6 +54,11 @@ var searchFunc = function (event) {
     var cityName = inputEl.value;
     getWeather(cityName);
 };
+
+var prevSearch = function (event) {
+    getWeather(event.target.textContent);
+}
+
 
 var getWeather = function (cityName) {
     var currentUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
@@ -77,10 +80,11 @@ var getWeather = function (cityName) {
                         var recentSearch = document.createElement('li');
                         var recentSearchBtn = document.createElement('button')
                         recentSearchBtn.textContent = cityName;
-                        recentSearchBtn.classList = "btn btn-outline-dark"
+                        recentSearchBtn.classList = "btn btn-outline-dark";                        
                         recentSearch.appendChild(recentSearchBtn);
                         recentSearch.classList = "list-group-item recent-search";
                         cityHistoryEl.prepend(recentSearch);
+                        recentSearchBtn.addEventListener("click", prevSearch);
                         searchesArr.push(cityName);
                         localStorage.setItem("city", JSON.stringify(searchesArr));
 
@@ -140,8 +144,6 @@ var getWeather = function (cityName) {
 
                             forecast.appendChild(specificDay[i - 1]);
                         }
-
-                        // none of the above shows up
                     })
                 });
             })
@@ -152,5 +154,21 @@ var getWeather = function (cityName) {
         }
     });
 }
+
+function makeHistory(i) {
+    var recentSearch = document.createElement('li');
+    var recentSearchBtn = document.createElement('button');
+    recentSearchBtn.textContent = cities[i];
+    recentSearchBtn.classList = "btn btn-outline-dark";
+    recentSearch.appendChild(recentSearchBtn);
+    recentSearch.classList = "list-group-item recent-search";
+    cityHistoryEl.prepend(recentSearch);
+    recentSearchBtn.addEventListener("click", prevSearch);
+    searchesArr.push(cities[i]);
+    localStorage.setItem("city", JSON.stringify(searchesArr));
+    return { recentSearch, recentSearchBtn };
+}
+
 displayButtons();
-buttonEl.addEventListener("click", searchFunc)
+
+searchButtonEl.addEventListener("click", searchFunc);
