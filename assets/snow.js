@@ -1,4 +1,3 @@
-// if u have time - clean up repetitive code in both for loops in displayButtons/ 'search history button' section of getWeather
 // fix repeating city names in cityHistoryEl
 // icons don't work locally - Cross-Origin Read Blocking
 
