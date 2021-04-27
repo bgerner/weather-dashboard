@@ -108,17 +108,17 @@ var getWeather = function (cityName) {
                         currentWeather.appendChild(humidity);
                         var uv = document.createElement('p');
                         var uvSpan = document.createElement('span');
-                        var uvValue = Math.round(weatherdata.current.uvi);
-                        if (uvValue <= 2) {
+                        var uvValue = weatherdata.current.uvi;
+                        if (uvValue <= 2.99) {
                             uvSpan.classList = 'green'
                         }
-                        else if (5 >= uvValue && uvValue >= 3) {
+                        else if (5.99 >= uvValue && uvValue >= 3) {
                             uvSpan.classList = 'yellow'
                         }
-                        else if (7 >= uvValue && uvValue >= 6) {
+                        else if (7.99 >= uvValue && uvValue >= 6) {
                             uvSpan.classList = 'orange'
                         }
-                        else if (10 >= uvValue && uvValue >= 8) {
+                        else if (10.99 >= uvValue && uvValue >= 8) {
                             uvSpan.classList = 'red'
                         }
                         else if (uvValue >= 11) {
