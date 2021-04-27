@@ -12,3 +12,33 @@ h1 {
 .day {
     background: #c83f49;
 }
+.green {
+    background: rgba(0, 177, 106, 1);
+    color: whitesmoke;
+    border-radius: 12px;
+    font-weight: bold;
+}
+.yellow {
+    background: rgba(247, 202, 24, 1);
+    color: whitesmoke;
+    border-radius: 12px;
+    font-weight: bold;
+}
+.orange {
+    background: rgba(255, 166, 0, 1);
+    color: whitesmoke;
+    border-radius: 12px;
+    font-weight: bold;
+}
+.red {
+    background: rgba(255, 0, 0, 1);
+    color: whitesmoke;
+    border-radius: 12px;
+    font-weight: bold;
+}
+.purple {
+    background: rgba(121, 7, 242, 1);
+    color: whitesmoke;
+    border-radius: 12px;
+    font-weight: bold;
+}

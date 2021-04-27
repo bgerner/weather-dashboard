@@ -108,7 +108,26 @@ var getWeather = function (cityName) {
                         humidity.textContent = "Humidity: " + weatherdata.current.humidity + "%";
                         currentWeather.appendChild(humidity);
                         var uv = document.createElement('p');
-                        uv.textContent = "UV Index: " + weatherdata.current.uvi;
+                        var uvSpan = document.createElement('span');
+                        var uvValue = Math.round(weatherdata.current.uvi);
+                        if (uvValue <= 2) {
+                            uvSpan.classList = 'green'
+                        }
+                        else if (5 >= uvValue && uvValue >= 3) {
+                            uvSpan.classList = 'yellow'
+                        }
+                        else if (7 >= uvValue && uvValue >= 6) {
+                            uvSpan.classList = 'orange'
+                        }
+                        else if (10 >= uvValue && uvValue >= 8) {
+                            uvSpan.classList = 'red'
+                        }
+                        else if (uvValue >= 11) {
+                            uvSpan.classList ='purple'
+                        }
+                        uvSpan.textContent = uvValue
+                        uv.textContent = "UV Index: ";
+                        uv.appendChild(uvSpan);
                         currentWeather.appendChild(uv);
 
                         // 5 day forecast
