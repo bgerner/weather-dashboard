@@ -93,7 +93,7 @@ var getWeather = function (cityName) {
                         // var cityHeader = document.createElement('h2');
                         cityHeader.textContent = cityName + " (" + moment(weatherdata.current.dt * 1000).tz(weatherdata.timezone).format('MM/DD/YYYY') + ") ";
                         iconImgEl = document.createElement('img');
-                        iconImgEl.setAttribute("src", "http://openweather.org/img/wn/" + icon + "@2x.png");
+                        iconImgEl.setAttribute("src", "./assets/imgs/" + icon + "@2x.png");
                         cityHeader.appendChild(iconImgEl);
                         currentWeather.appendChild(cityHeader);
 
@@ -145,7 +145,7 @@ var getWeather = function (cityName) {
 
                             var forecastIcon = selectDay.weather[0].icon
                             var forecastIconImgEl = document.createElement('img');
-                            forecastIconImgEl.setAttribute("src", "http://openweather.org/img/wn/" + forecastIconImgEl + "@2x.png");
+                            forecastIconImgEl.setAttribute("src", "./assets/imgs/" + forecastIcon + "@2x.png");
                             specificDay[i - 1].appendChild(forecastIconImgEl);
 
                             var forecastTemp = document.createElement('p');
