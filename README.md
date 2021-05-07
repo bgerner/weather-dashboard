@@ -6,8 +6,7 @@ Once a city has been searched, that city is added to a list of fancily bootstrap
 These buttons are saved to localStorage and up to the most recent 10 searches will be displayed when the page is reloaded.
 
 Screenshots:
-<img width="1514" alt="Screen Shot 2021-04-26 at 8 00 22 PM" src="https://user-images.githubusercontent.com/79947732/116178306-2a681180-a6ca-11eb-86b5-addcae79584e.png">
-<img width="1016" alt="Screen Shot 2021-04-26 at 8 00 59 PM" src="https://user-images.githubusercontent.com/79947732/116178317-2dfb9880-a6ca-11eb-8c28-43341c231235.png">
+<img width="1372" alt="Screen Shot 2021-05-07 at 12 17 20 PM" src="https://user-images.githubusercontent.com/79947732/117498121-38216080-af2e-11eb-9d62-07b5385ce51e.png">
 
 Link to deployed app:
 https://bgerner.github.io/weather-dashboard/
